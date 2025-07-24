@@ -9,7 +9,7 @@
     "isEntry": true
   },
   "resources/js/Pages/Home.vue": {
-    "file": "assets/Home-CxBMrRsh.js",
+    "file": "assets/Home-BR51a9Ck.js",
     "name": "Home",
     "src": "resources/js/Pages/Home.vue",
     "isDynamicEntry": true,
@@ -21,7 +21,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DTKTnqIW.js",
+    "file": "assets/app-BGtBqosq.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
