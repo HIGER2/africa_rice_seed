@@ -1,20 +1,27 @@
 {
+  "public/images/logo.webp": {
+    "file": "assets/logo-Bok5yppB.webp",
+    "src": "public/images/logo.webp"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-DjdzLNy_.css",
+    "file": "assets/app-B2M_QS01.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/Pages/Home.vue": {
-    "file": "assets/Home-Dz48_CqV.js",
+    "file": "assets/Home-CxBMrRsh.js",
     "name": "Home",
     "src": "resources/js/Pages/Home.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js"
+    ],
+    "assets": [
+      "assets/logo-Bok5yppB.webp"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-3BI91f4N.js",
+    "file": "assets/app-DTKTnqIW.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
