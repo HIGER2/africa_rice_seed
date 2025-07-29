@@ -49,7 +49,7 @@
         <p><strong>Quantité totale / Total quantity :</strong> {{ $order['total_quantity'] }}</p>
         <p><strong>Coût total / Total cost :</strong> {{ number_format($order['total_cost'], 2) }} FCFA</p>
         <p><strong>Date création / Created at :</strong> {{ \Carbon\Carbon::parse($order['created_at'])->format('d/m/Y H:i') }}</p>
-        <p><strong>Date livraison / Delivery date :</strong> {{ \Carbon\Carbon::parse($order['date_delivery'])->format('d/m/Y') }}</p>
+        <p><strong>Date prévisionnelle de livraison  / Expected date of delivery :</strong> {{ \Carbon\Carbon::parse($order['date_delivery'])->format('d/m/Y') }}</p>
         {{-- <p style="margin-bottom:20px;"><strong>Dernière mise à jour / Updated at :</strong> {{ \Carbon\Carbon::parse($order['updated_at'])->format('d/m/Y H:i') }}</p> --}}
 
         <h3 style="font-size:16px; margin-bottom:10px;">Articles commandés / Ordered Items</h3>
