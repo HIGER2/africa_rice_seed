@@ -5,11 +5,11 @@
     <title>Détails de la commande / Order Details</title>
 </head>
 <body style="font-family: Arial, sans-serif; background:#f9f9f9; padding:15px; color:#333; font-size:14px; line-height:1.4;">
+        
+    <div style="max-width:700px; margin:auto; background:#fff; padding:15px 20px; border-radius:6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
         <div style="text-align: center; margin-bottom: 20px;">
             <img src="{{ asset('images/logo.webp') }}" alt="Logo" style="max-height: 40px;">
         </div>
-    <div style="max-width:700px; margin:auto; background:#fff; padding:15px 20px; border-radius:6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-
         <!-- Message bilingue -->
         <p style="margin-bottom:8px;">Bonjour <strong>{{ $order->requester->full_name }}</strong>,</p>
         <p style="margin-top:0; margin-bottom:12px; font-size:13px; color:#555;">
