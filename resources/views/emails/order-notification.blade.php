@@ -5,6 +5,9 @@
     <title>Détails de la commande / Order Details</title>
 </head>
 <body style="font-family: Arial, sans-serif; background:#f9f9f9; padding:15px; color:#333; font-size:14px; line-height:1.4;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="{{ asset('images/logo.webp') }}" alt="Logo" style="max-height: 40px;">
+        </div>
     <div style="max-width:700px; margin:auto; background:#fff; padding:15px 20px; border-radius:6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
 
         <!-- Message bilingue -->
@@ -12,7 +15,7 @@
         <p style="margin-top:0; margin-bottom:12px; font-size:13px; color:#555;">
             Votre commande a été enregistrée avec succès.<br>Merci de votre confiance.
         </p>
-        <p style="margin-top:0; margin-bottom:15px;">Cdt,<br><strong>AfricaRice</strong></p>
+        {{-- <p style="margin-top:0; margin-bottom:15px;">Cdt,<br><strong>AfricaRice</strong></p> --}}
 
         <hr style="border:none; border-top:1px solid #ddd; margin:25px 0;" />
 
@@ -20,7 +23,7 @@
         <p style="margin-top:0; margin-bottom:12px; font-size:13px; color:#555;">
             Your order has been successfully placed.<br>Thank you for your trust.
         </p>
-        <p style="margin-top:0; margin-bottom:25px;">Regards,<br><strong>AfricaRice</strong></p>
+        {{-- <p style="margin-top:0; margin-bottom:25px;">Regards,<br><strong>AfricaRice</strong></p> --}}
 
         <h2 style="font-size:18px; margin-bottom:15px; border-bottom:1px solid #ddd; padding-bottom:5px;">
            Général informations / General information
@@ -75,6 +78,15 @@
             Montant total / Total amount : {{ number_format($order['total_cost'], 2) }} FCFA
         </p>
 
+        <p style="margin-top:0; margin-bottom:15px;">Cdt /  regards,<br><strong>AfricaRice</strong></p>
+
+        <!-- (optionnel) ligne de séparation -->
+        <hr style="border:none; border-top:1px solid #ccc; margin:25px 0;" />
+
+        <!-- Footer -->
+        <p style="font-size: 12px; color: #888;">
+            © 2025 AfricaRice. Tous droits réservés.
+        </p>
     </div>
 </body>
 </html>
