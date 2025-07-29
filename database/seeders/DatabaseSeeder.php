@@ -23,18 +23,33 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         // Seed requester types
         $requesters = [
-            ['id' => 1, 'label' => 'Public Seed Company'],
-            ['id' => 2, 'label' => 'Public Research Institute'],
-            ['id' => 3, 'label' => 'Private Seed Company'],
-            ['id' => 4, 'label' => 'Farmers’ Cooperative'],
-            ['id' => 5, 'label' => 'Others (precise)'],
+            ['label' => 'Public Seed Company'],
+            ['label' => 'Public Research Institute'],
+            ['label' => 'Private Seed Company'],
+            ['label' => 'Farmers’ Cooperative'],
+            ['label' => 'Others (precise)'],
         ];
+
         foreach ($requesters as $requester) {
             DB::table('requester_types')->updateOrInsert(
-                ['id' => $requester['id']],
-                ['label' => $requester['label']]
+                ['label' => $requester['label']], // condition : on cherche par label
+                ['label' => $requester['label']]  // valeur à insérer ou mettre à jour
             );
         }
+
+        $types = [
+            ['name' => 'Breeder seed', 'price_per_kg' => 8],
+            ['name' => 'Foundation seed', 'price_per_kg' => 5],
+            ['name' => 'Hybrid', 'price_per_kg' => 10],
+        ];
+
+        foreach ($types as $type) {
+            DB::table('variety_types')->updateOrInsert(
+                ['name' => $type['name']],      // condition (on vérifie si le nom existe déjà)
+                ['price_per_kg' => $type['price_per_kg']]     // données à mettre à jour ou insérer
+            );
+        }
+
         // $ngo = RequesterType::create(['label' => 'NGO']);
         // $private = RequesterType::create(['label' => 'Private']);
         // $gov = RequesterType::create(['label' => 'Government']);
@@ -43,10 +58,8 @@ class DatabaseSeeder extends Seeder
         // $breeder = VarietyType::create(['name' => 'Breeder']);
         // $foundation = VarietyType::create(['name' => 'Foundation']);
 
-        // // Seed varieties
-        // $variety1 = Variety::create(['name' => 'Nerica 1', 'variety_type_id' => $breeder->id]);
-        // $variety2 = Variety::create(['name' => 'Nerica 4', 'variety_type_id' => $foundation->id]);
-        // $variety3 = Variety::create(['name' => 'IR64', 'variety_type_id' => $breeder->id]);
+        // Seed varieties
+       
 
         // // Seed requesters
         // $requester1 = Requester::create([

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('variety_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('price_per_kg_usd', 10, 2)->default(0);
+            $table->decimal('price_per_kg', 10, 2)->default(0);
             $table->timestamps();
         });
     }

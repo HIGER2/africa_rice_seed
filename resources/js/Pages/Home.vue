@@ -2,9 +2,8 @@
 <script setup>
 import { reactive ,onMounted,computed} from 'vue'
 
-defineProps(['message'])
+defineProps(['requesterType','variety'])
 import { ref } from 'vue'
-
 const selected = ref('')
 const dropdownValue = ref('')
 
@@ -23,30 +22,6 @@ const type=[
     }
 ]
 
-        // seed_certif:[{...initseed_certif}]
-
-const request=[
-    {
-        name:"Public Seed Company",
-        id:1
-    },
-     {
-        name:"Public Research Institute",
-        id:2
-    },
-    {
-        name:"Private Seed Company",
-        id:3
-    },
-    {
-        name:"Farmers’ Cooperative",
-        id:4
-    },
-    {
-        name:"Others (precise)",
-        id:5
-    }
-]
 
 let init_item ={
         name:'',
@@ -66,11 +41,13 @@ const payload = reactive({
         phone:"",
         email:"",
         address:"",
-        requester_type_id:null,
-        custom_requester_type:""
+        requester_type_id:"",
+        custom_requester_type:"",
+        gender:"",
+        company:""
     },
     order:{
-        seed_class:"AfricaRice",
+        seed_class:"AfricaRice_Mandated_Seed_Classes",
         total_quantity:0,
         total_cost:0
     },
@@ -96,7 +73,7 @@ const addSeedClass =()=>{
 
 const selectVariete =(event,index)=>{
   const selected = JSON.parse(event.target.value)
-  payload.order_items[index].cost_per_kg = selected.price
+  payload.order_items[index].cost_per_kg = selected.price_per_kg
   payload.order_items[index].name = selected.name
   onQuantity(index)
 }
@@ -156,7 +133,7 @@ onMounted(() => {
       
       <!-- Left Panel -->
       <div class="flex-1 space-y-8">
-
+        <!-- {{ requesterType }} -->
         <!-- General Info -->
         <div class="space-y-4">
           <h2 class="text-xl font-bold text-gray-800">Général informations</h2>
@@ -165,11 +142,23 @@ onMounted(() => {
             <!-- Full Name -->
             <div>
               <label class="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
-              <input v-model="payload.user.full_name" type="text" required placeholder="Full name"
+              <input v-model="payload.user.full_name" type="text" required 
+              placeholder="Family name & fistname"
                      class="w-full text-sm border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
-            <!-- Phone -->
+            <!-- gender -->
+            <div>
+              <label class="block text-sm font-medium text-gray-600 mb-1">Gender</label>
+              <select 
+              v-model="payload.user.gender"
+              name="" id="" class="w-full text-sm border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" disabled>Select gender</option>
+                <option value="male" >Male</option>
+                <option value="female" >Female</option>
+              </select>
+            </div>
+             <!-- Phone -->
             <div>
               <label class="block text-sm font-medium text-gray-600 mb-1">Phone</label>
               <input v-model="payload.user.phone" type="text" required placeholder="Phone"
@@ -180,6 +169,13 @@ onMounted(() => {
             <div>
               <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
               <input v-model="payload.user.email" type="email" required placeholder="Email"
+                     class="w-full text-sm border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- company -->
+            <div>
+              <label class="block text-sm font-medium text-gray-600 mb-1">Company name</label>
+              <input v-model="payload.user.company" type="text" required placeholder="Company name"
                      class="w-full text-sm border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
@@ -196,7 +192,8 @@ onMounted(() => {
             <label class="block text-sm font-medium text-gray-600 mb-1">Type of requester</label>
             <select v-model="payload.user.requester_type_id" required
                     class="w-full text-sm border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option v-for="(item, index) in request" :value="item.id" :key="index">{{ item.name }}</option>
+                <option value="" disabled>Select Type of requester</option>
+              <option v-for="(item, index) in requesterType" :value="item.id" :key="index">{{ item.label }}</option>
             </select>
           </div>
 
@@ -218,13 +215,13 @@ onMounted(() => {
           <div class="mt-4 space-y-4">
             <div class="space-y-2">
               <label class="flex items-center gap-2">
-                <input required type="radio" value="AfricaRice" v-model="payload.order.seed_class"
+                <input required type="radio" value="AfricaRice_Mandated_Seed_Classes" v-model="payload.order.seed_class"
                        class="text-blue-600 focus:ring-blue-500">
                 <span class="text-sm font-medium text-gray-700">AfricaRice Mandated Seed Classes</span>
               </label>
 
               <label class="flex items-center gap-2">
-                <input required type="radio" value="Certified" v-model="payload.order.seed_class"
+                <input required type="radio" value="Certified_Seed" v-model="payload.order.seed_class"
                        class="text-blue-600 focus:ring-blue-500">
                 <span class="text-sm font-medium text-gray-700">Certified Seed</span>
               </label>
@@ -234,13 +231,13 @@ onMounted(() => {
             <div class="border border-gray-200 bg-gray-50 rounded-xl p-4 space-y-4">
               <div v-for="(item, index) in payload.order_items" :key="index" 
               class="border-b py-2 border-gray-200 flex flex-col md:flex-row gap-3 items-end">
-                <div v-if="payload.order.seed_class === 'AfricaRice'" class="flex-1">
+                <div v-if="payload.order.seed_class === 'AfricaRice_Mandated_Seed_Classes'" class="flex-1">
                   <label class="block text-sm font-medium text-gray-600 mb-1">Variety Type</label>
                   <select @change="(event) => selectVariete(event, index)"
                         value=""
                           class="w-full text-sm border border-gray-300 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option disabled value="">Variety Type</option>
-                    <option v-for="(item, index) in type" :value="JSON.stringify(item)" :key="index">
+                    <option v-for="(item, index) in variety" :value="JSON.stringify(item)" :key="index">
                       {{ item.name }}
                     </option>
                   </select>

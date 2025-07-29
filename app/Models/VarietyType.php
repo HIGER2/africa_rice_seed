@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class VarietyType extends Model
 {
-     protected $fillable = ['name'];
+     protected $fillable = ['name','price_per_kg'];
 
-    public function varieties()
-    {
-        return $this->hasMany(Variety::class);
-    }
 }

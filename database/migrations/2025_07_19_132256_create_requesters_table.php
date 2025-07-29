@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('company')->nullable();
             $table->string('address')->nullable();
             $table->foreignId('requester_type_id')->nullable()->constrained()->onDelete('set null');
             $table->string('custom_requester_type')->nullable();

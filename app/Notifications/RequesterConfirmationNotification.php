@@ -16,7 +16,7 @@ class RequesterConfirmationNotification extends Notification
      */
         protected $order;
 
-     public function __construct($order)
+    public function __construct($order)
     {
         $this->order = $order;
     }
@@ -37,12 +37,16 @@ class RequesterConfirmationNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
        return (new MailMessage)
-                    ->subject('Confirmation de votre commande')
-                    ->greeting('Bonjour ' . $notifiable->full_name)
-                    ->line('Votre commande a été enregistrée avec succès.')
-                    // ->line('Description : ' . $this->order->description)
-                    // ->line('Quantité : ' . $this->order->quantity)
-                    ->line('Merci de votre confiance.');
+                    ->subject('Confirmation de commande / Order Confirmation')
+                    ->view('emails.order-notification', [
+                        'order' => $this->order
+                    ]);
+
+                    // ->greeting('Bonjour ' . $notifiable->full_name)
+                    // ->line('Votre commande a été enregistrée avec succès.')
+                    // // ->line('Description : ' . $this->order->description)
+                    // // ->line('Quantité : ' . $this->order->quantity)
+                    // ->line('Merci de votre confiance.');
     }
 
     /**

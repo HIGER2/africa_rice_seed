@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('requester_id')->constrained()->onDelete('cascade');
-            $table->enum('seed_class', ['AfricaRice', 'Certified']);
+            $table->enum('seed_class', ['AfricaRice_Mandated_Seed_Classes', 'Certified_Seed']);
             $table->integer('total_quantity')->default(0);
+            $table->date('date');
+            $table->date('date_delivery');
             $table->decimal('total_cost', 10, 2)->default(0);
             $table->timestamps();
         });

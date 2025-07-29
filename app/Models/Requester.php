@@ -10,8 +10,13 @@ class Requester extends Model
     use Notifiable;
 
     protected $fillable = [
-        'full_name', 'phone', 'email', 'address', 
-        'requester_type_id', 'custom_requester_type'
+        'full_name', 
+        'phone', 'email', 
+        'address', 
+        'gender',
+        'company',
+        'requester_type_id', 
+        'custom_requester_type'
     ];
 
     public function requesterType()

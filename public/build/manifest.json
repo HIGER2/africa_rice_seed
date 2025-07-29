@@ -4,12 +4,12 @@
     "src": "public/images/logo.webp"
   },
   "resources/css/app.css": {
-    "file": "assets/app-B2M_QS01.css",
+    "file": "assets/app-Bg-cfKXI.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/Pages/Home.vue": {
-    "file": "assets/Home-BR51a9Ck.js",
+    "file": "assets/Home-BoPgw45r.js",
     "name": "Home",
     "src": "resources/js/Pages/Home.vue",
     "isDynamicEntry": true,
@@ -21,7 +21,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-BGtBqosq.js",
+    "file": "assets/app-BLo6Qs81.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
