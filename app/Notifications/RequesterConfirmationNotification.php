@@ -15,10 +15,12 @@ class RequesterConfirmationNotification extends Notification
      * Create a new notification instance.
      */
         protected $order;
+        protected $ccEmails;
 
-    public function __construct($order)
+    public function __construct($order,$ccEmails)
     {
         $this->order = $order;
+        $this->ccEmails = $ccEmails;
     }
 
     /**
@@ -38,6 +40,7 @@ class RequesterConfirmationNotification extends Notification
     {
        return (new MailMessage)
                     ->subject('Confirmation de commande / Order Confirmation')
+                    ->cc($this->ccEmails)
                     ->view('emails.order-notification', [
                         'order' => $this->order
                     ]);

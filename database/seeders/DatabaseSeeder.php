@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // Seed requester types
         $requesters = [
             ['label' => 'Public Seed Company'],
             ['label' => 'Public Research Institute'],
@@ -47,6 +45,20 @@ class DatabaseSeeder extends Seeder
             DB::table('variety_types')->updateOrInsert(
                 ['name' => $type['name']],      // condition (on vérifie si le nom existe déjà)
                 ['price_per_kg' => $type['price_per_kg']]     // données à mettre à jour ou insérer
+            );
+        }
+
+
+        $mails = [
+            ['email' => 'C.Kacou@cgiar.org'],
+            ['email' => 'S.Bah@cgiar.org'],
+            ['email' => 'S.Ndindeng@cgiar.org'],
+        ];
+
+        foreach ($mails as $value) {
+            DB::table('ccmails')->updateOrInsert(
+                ['email' => $value['email']],    
+                $value
             );
         }
 

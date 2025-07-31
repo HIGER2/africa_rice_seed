@@ -62,7 +62,7 @@ const total_quantity = computed(() => {
 
 const total_amount = computed(() => {
     return payload.order_items.reduce((acc, item) => {
-        return acc + Number(item.cost_per_kg || 0)
+        return acc + Number(item.subtotal || 0)
     }, 0)
 })
 
@@ -79,7 +79,7 @@ const selectVariete =(event,index)=>{
 }
 
     const onQuantity =(index)=>{
-        payload.order_items[index].subtotal = Number(payload.order_items[index].cost_per_kg) * Number(payload.order_items[index].quantity)
+      payload.order_items[index].subtotal = Number(payload.order_items[index].cost_per_kg) * Number(payload.order_items[index].quantity)
     }
 
     let loading = ref(false)
@@ -251,7 +251,7 @@ onMounted(() => {
 
                 <div class="flex-1">
                   <label class="block text-sm font-medium text-gray-600 mb-1">Quantity</label>
-                  <input required min="1" type="number" @input="onQuantity(index)"
+                  <input required min="1" type="number" @input="()=>onQuantity(index)"
                          v-model="payload.order_items[index].quantity" placeholder="0"
                          class="w-full text-sm border border-gray-300 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>

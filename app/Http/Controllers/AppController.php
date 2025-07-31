@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ccmail;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Requester;
@@ -77,7 +78,9 @@ class AppController extends Controller
 
             DB::commit();
 
-            $requester->notify(new RequesterConfirmationNotification($order));
+            $ccEmails = Ccmail::pluck('email')->toArray();
+
+            $requester->notify(new RequesterConfirmationNotification($order,$ccEmails));
             return response()->json(['message' => 'Commande créée avec succès.', 'order' => $order], 201);
 
         } catch (\Throwable $e) {
