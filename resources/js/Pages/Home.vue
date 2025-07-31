@@ -128,6 +128,7 @@ onMounted(() => {
 <template>
 <div class="w-full bg-gray-50 flex-col min-h-screen flex items-center justify-center p-4 sm:p-6">
   <img src="/public/images/logo.webp" class="w-[150px] mb-5" alt="Mon Logo">
+  <h2 class=" text-lg mb-2">Welcome to  Seed Request form / Bienvenu sur le formulaire de demande de semence</h2>
   <form @submit.prevent="handleSubmit" class="w-full max-w-6xl">
     <div class="w-full mx-auto p-6 sm:p-8 bg-white rounded-2xl border border-gray-300 flex flex-col md:flex-row gap-6 md:gap-10">
       
