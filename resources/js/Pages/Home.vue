@@ -137,7 +137,7 @@ onMounted(() => {
         <!-- {{ requesterType }} -->
         <!-- General Info -->
         <div class="space-y-4">
-          <h2 class="text-xl font-bold text-gray-800">Général informations</h2>
+          <h2 class="text-xl font-bold text-gray-800">General Information</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Full Name -->
@@ -264,11 +264,11 @@ onMounted(() => {
                 </div>
 
                 <button type="button" @click="removeSeedClass(index)"
-                        class="text-red-600 hover:text-red-800 text-xl font-bold">×</button>
+                    class="text-red-600 cursor-pointer hover:text-red-800 text-xl font-bold">×</button>
               </div>
 
               <button @click="addSeedClass" type="button"
-                      class="text-sm border border-blue-500 text-blue-600 hover:bg-blue-50 rounded-lg px-4 py-2 transition">
+                      class="text-sm border cursor-pointer border-blue-500 text-blue-600 hover:bg-blue-50 rounded-lg px-4 py-2 transition">
                 + Add New
               </button>
             </div>
