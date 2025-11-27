@@ -26,7 +26,7 @@
         {{-- <p style="margin-top:0; margin-bottom:25px;">Regards,<br><strong>AfricaRice</strong></p> --}}
 
         <h2 style="font-size:18px; margin-bottom:15px; border-bottom:1px solid #ddd; padding-bottom:5px;">
-           Général informations / General information
+            Informations Générales / General Information
         </h2>
 
         <p><strong>Nom / Name :</strong> {{ $order->requester->full_name ?? '—' }}</p>
